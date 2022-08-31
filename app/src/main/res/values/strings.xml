@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">SignUpFragmentsTutorial</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_name">Name</string>
+    <string name="languagesTV"><u>LANGUAGES</u></string>
+    <string name="genderTV"><u>GENDER</u></string>
+    <string name="nameET">Name</string>
+    <string name="surnameET">Surname</string>
+    <string name="usernameET">Username</string>
+    <string name="dateET">Date of Birth</string>
+    <string name="passwordET">Password</string>
+    <string name="confirm_passwordET">Confirm password</string>
+    <string name="maleRB">Male</string>
+    <string name="femaleRB">Female</string>
+    <string name="otherRB">Other</string>
+    <string name="kotlinCB">Kotlin</string>
+    <string name="javaCB">Java</string>
+    <string name="dartCB">Dart</string>
+    <string name="csharpCB">C#</string>
+    <string name="buttonContinue">Continue</string>
+</resources>

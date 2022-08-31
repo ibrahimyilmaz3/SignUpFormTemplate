@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_map"
+    app:startDestination="@id/signUpFragment">
+
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.iyilmaz.signupfragmentstutorial.fragment.SignUpFragment"
+        android:label="Sign Up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_approveInputFragment"
+            app:destination="@id/approveInputFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/approveInputFragment"
+        android:name="com.iyilmaz.signupfragmentstutorial.fragment.ApproveInputFragment"
+        android:label="View Your Information"
+        tools:layout="@layout/fragment_approve_input" >
+        <action
+            android:id="@+id/action_approveInputFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment"
+            app:popUpTo="@id/signUpFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="Person"
+            app:argType="com.iyilmaz.signupfragmentstutorial.entity.Person" />
+    </fragment>
+</navigation>
