@@ -53,7 +53,7 @@ class SignUpFragment : Fragment() {
                 myCalendar(view)
             }
 
-            datePicker.setOnDateChangedListener {
+            datePicker.setOnDateChangedListener() {
                 datePicker,day,month,year ->
                 etDate.setText(datePicker())
                 datePicker.visibility = View.GONE
