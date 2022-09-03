@@ -5,23 +5,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.datepicker.MaterialDatePicker
 import com.iyilmaz.signupfragmentstutorial.databinding.FragmentSignUpBinding
 import com.iyilmaz.signupfragmentstutorial.entity.Person
 
 
 class SignUpFragment : Fragment() {
     private lateinit var binding: FragmentSignUpBinding
-    lateinit var person: Person
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSignUpBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 
@@ -29,8 +27,10 @@ class SignUpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            //set on click
+
+
             btnContinue.setOnClickListener {
+
                 val direction =
                     SignUpFragmentDirections.actionSignUpFragmentToApproveInputFragment(
                         Person(
@@ -39,7 +39,7 @@ class SignUpFragment : Fragment() {
                             etUsername.text.toString(),
                             etDate.text.toString(),
                             etPassword.text.toString(),
-                            null,
+                            onClickButton(),
                             null,
                             null,
                             null,
@@ -47,31 +47,27 @@ class SignUpFragment : Fragment() {
                         )
                     )
                 findNavController().navigate(direction)
-
             }
             imageButton.setOnClickListener {
-                myCalendar(view)
+                val datePickerFragment = DatePickerFragment()
+                val supportFragmentManager = requireActivity().supportFragmentManager
+
+                supportFragmentManager.setFragmentResultListener(
+                    "REQUEST_KEY",
+                    viewLifecycleOwner
+                ) { resultKey, bundle ->
+                    if (resultKey == "REQUEST_KEY") {
+                        val date = bundle.getString("SELECTED_DATE")
+                        etDate.setText(date)
+                    }
+                }
+                datePickerFragment.show(supportFragmentManager, "DatePickerFragment")
             }
-
-            datePicker.setOnDateChangedListener() {
-                datePicker,day,month,year ->
-                etDate.setText(datePicker())
-                datePicker.visibility = View.GONE
-            }
-
-            etDate.setText(datePicker())
-        }
+        }//binding.apply//
     }
-
-    fun datePicker(): String {
-        val day = binding.datePicker.dayOfMonth.toString().padStart(2,'0')
-        val month = binding.datePicker.month.toString().padStart(2,'0')
-        val year = binding.datePicker.year.toString().padStart(4,'0')
-        return "$day/$month/$year"
+    private fun onClickButton(): String {
+        return binding.root
+            .findViewById<RadioButton>(binding.radioGroup.checkedRadioButtonId)
+            .text.toString()
     }
-
-    fun myCalendar(view: View) {
-        binding.datePicker.visibility = View.VISIBLE
-    }
-
 }

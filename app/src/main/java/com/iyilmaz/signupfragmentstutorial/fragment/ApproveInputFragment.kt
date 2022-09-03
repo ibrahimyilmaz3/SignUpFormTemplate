@@ -18,7 +18,7 @@ class ApproveInputFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentApproveInputBinding.inflate(inflater,container,false)
+        binding = FragmentApproveInputBinding.inflate(inflater, container, false)
         person = args.person
 
         return binding.root
@@ -27,7 +27,9 @@ class ApproveInputFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-        tvShow.text = person.name
+            "${person.name}${person.surname}${person.username}${person.date}${person.password}${person.gender}".also {
+                tvShow.text = it
+            }
         }
     }
 }
