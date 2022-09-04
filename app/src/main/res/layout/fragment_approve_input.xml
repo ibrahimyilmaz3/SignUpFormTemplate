@@ -6,15 +6,153 @@
     android:layout_height="match_parent"
     tools:context=".fragment.ApproveInputFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:id="@+id/tvShow"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:text="@string/name"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/tvShowName"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvShowName" />
+
+
+    <TextView
+        android:id="@+id/tvShowName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_name"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvShowSurname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvName"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSurname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/surname"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tvShowSurname"
+        app:layout_constraintEnd_toEndOf="@+id/tvName" />
+
+    <TextView
+        android:id="@+id/tvShowSurname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/surname"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvShowUsername"
+        app:layout_constraintStart_toStartOf="@+id/tvShowName"
+        app:layout_constraintTop_toBottomOf="@+id/tvShowName" />
+
+    <TextView
+        android:id="@+id/tvUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/username"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tvShowUsername"
+        app:layout_constraintEnd_toEndOf="@+id/tvSurname" />
+
+    <TextView
+        android:id="@+id/tvShowUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/username"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvShowDOB"
+        app:layout_constraintStart_toStartOf="@+id/tvShowSurname"
+        app:layout_constraintTop_toBottomOf="@+id/tvShowSurname" />
+
+    <TextView
+        android:id="@+id/tvDOB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date_of_birth"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tvShowDOB"
+        app:layout_constraintEnd_toEndOf="@+id/tvUsername" />
+
+    <TextView
+        android:id="@+id/tvShowDOB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/date_of_birth"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvShowGender"
+        app:layout_constraintStart_toStartOf="@+id/tvShowUsername"
+        app:layout_constraintTop_toBottomOf="@+id/tvShowUsername" />
+
+    <TextView
+        android:id="@+id/tvAppGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/gender"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tvShowGender"
+        app:layout_constraintEnd_toEndOf="@+id/tvDOB" />
+
+    <TextView
+        android:id="@+id/tvShowGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/gender"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvShowSkills"
+        app:layout_constraintStart_toStartOf="@+id/tvShowDOB"
+        app:layout_constraintTop_toBottomOf="@+id/tvShowDOB" />
+
+    <TextView
+        android:id="@+id/tvSkills"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/skills"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tvAppGender"
+        app:layout_constraintTop_toTopOf="@+id/tvShowSkills" />
+
+    <TextView
+        android:id="@+id/tvShowSkills"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/skills"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnApprove"
+        app:layout_constraintStart_toStartOf="@+id/tvShowGender"
+        app:layout_constraintTop_toBottomOf="@+id/tvShowGender" />
+
+    <Button
+        android:id="@+id/btnGoBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/go_back"
+        app:layout_constraintBottom_toBottomOf="@+id/btnApprove"
+        app:layout_constraintEnd_toStartOf="@+id/btnApprove"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnApprove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/approve"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnGoBack"
+        app:layout_constraintTop_toBottomOf="@+id/tvShowSkills" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

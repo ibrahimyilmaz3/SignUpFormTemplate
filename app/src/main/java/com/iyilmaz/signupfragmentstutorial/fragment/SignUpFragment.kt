@@ -11,10 +11,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.iyilmaz.signupfragmentstutorial.databinding.FragmentSignUpBinding
 import com.iyilmaz.signupfragmentstutorial.entity.Person
-
-
 class SignUpFragment : Fragment() {
     private lateinit var binding: FragmentSignUpBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,7 +27,6 @@ class SignUpFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
 
-
             btnContinue.setOnClickListener {
 
                 val direction =
@@ -38,12 +36,11 @@ class SignUpFragment : Fragment() {
                             etSurname.text.toString(),
                             etUsername.text.toString(),
                             etDate.text.toString(),
-                            etPassword.text.toString(),
                             onClickButton(),
-                            null,
-                            null,
-                            null,
-                            null
+                            kotlinCheck(),
+                            javaCheck(),
+                            dartCheck(),
+                            cSharpCheck()
                         )
                     )
                 findNavController().navigate(direction)
@@ -62,12 +59,48 @@ class SignUpFragment : Fragment() {
                     }
                 }
                 datePickerFragment.show(supportFragmentManager, "DatePickerFragment")
-            }
-        }//binding.apply//
+            }//DatePicker
+        }//binding.apply\\
     }
+
+    private fun kotlinCheck(): String {
+        val check4 = when (binding.cbKotlin.isChecked) {
+            true -> binding.cbKotlin.text.toString()
+            false -> ""
+        }
+        return check4
+    }
+
+    private fun javaCheck(): String {
+        val check3 = when (binding.cbJava.isChecked) {
+            true -> binding.cbJava.text.toString()
+            false -> ""
+        }
+        return check3
+    }
+
+    private fun dartCheck(): String {
+        val check2 = when (binding.cbDart.isChecked) {
+            true -> binding.cbDart.text.toString()
+            false -> ""
+        }
+        return check2
+    }
+
+    private fun cSharpCheck(): String {
+        val check1 = when (binding.cbCsharp.isChecked) {
+            true -> binding.cbCsharp.text.toString()
+            false -> ""
+        }
+        return check1
+    }
+
+
+
+
     private fun onClickButton(): String {
         return binding.root
             .findViewById<RadioButton>(binding.radioGroup.checkedRadioButtonId)
             .text.toString()
-    }
+    } //RadioButton
 }
