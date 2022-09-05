@@ -5,7 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.iyilmaz.signupfragmentstutorial.R
 import com.iyilmaz.signupfragmentstutorial.databinding.FragmentApproveInputBinding
 import com.iyilmaz.signupfragmentstutorial.entity.Person
 
@@ -40,7 +44,10 @@ class ApproveInputFragment : Fragment() {
             "${person.kotlin} ${person.java} ${person.dart} ${person.cSharp} ".also {
                 tvShowSkills.text = it
             }
+            btnGoBack.setOnClickListener {
+                    findNavController().navigate(R.id.action_approveInputFragment_to_signUpFragment)
 
+            }
         }
     }
 }
