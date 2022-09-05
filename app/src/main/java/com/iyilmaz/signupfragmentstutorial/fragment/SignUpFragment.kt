@@ -1,5 +1,6 @@
 package com.iyilmaz.signupfragmentstutorial.fragment
 
+import android.app.AlertDialog
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,10 +10,13 @@ import android.widget.RadioButton
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.iyilmaz.signupfragmentstutorial.R
 import com.iyilmaz.signupfragmentstutorial.databinding.FragmentSignUpBinding
 import com.iyilmaz.signupfragmentstutorial.entity.Person
+
 class SignUpFragment : Fragment() {
     private lateinit var binding: FragmentSignUpBinding
+    private var isAllFieldsChecked: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,21 +33,25 @@ class SignUpFragment : Fragment() {
 
             btnContinue.setOnClickListener {
 
-                val direction =
-                    SignUpFragmentDirections.actionSignUpFragmentToApproveInputFragment(
-                        Person(
-                            etName.text.toString(),
-                            etSurname.text.toString(),
-                            etUsername.text.toString(),
-                            etDate.text.toString(),
-                            onClickButton(),
-                            kotlinCheck(),
-                            javaCheck(),
-                            dartCheck(),
-                            cSharpCheck()
+                isAllFieldsChecked = checkAllFields()
+
+                if (isAllFieldsChecked) {
+                    val direction =
+                        SignUpFragmentDirections.actionSignUpFragmentToApproveInputFragment(
+                            Person(
+                                etName.text.toString(),
+                                etSurname.text.toString(),
+                                etUsername.text.toString(),
+                                etDate.text.toString(),
+                                onClickButton(),
+                                kotlinCheck(),
+                                javaCheck(),
+                                dartCheck(),
+                                cSharpCheck()
+                            )
                         )
-                    )
-                findNavController().navigate(direction)
+                    findNavController().navigate(direction)
+                }
             }
             imageButton.setOnClickListener {
                 val datePickerFragment = DatePickerFragment()
@@ -61,6 +69,55 @@ class SignUpFragment : Fragment() {
                 datePickerFragment.show(supportFragmentManager, "DatePickerFragment")
             }//DatePicker
         }//binding.apply\\
+    }
+
+    private fun checkAllFields(): Boolean {
+        if (binding.etName.length() == 0) {
+            binding.etName.error = "This field is required!"
+            return false
+        }
+        if (binding.etSurname.length() == 0) {
+            binding.etSurname.error = "This field is required!"
+            return false
+        }
+        if (binding.etUsername.length() == 0) {
+            binding.etUsername.error = "This field is required!"
+            return false
+        }
+
+        if (binding.etDate.length() == 0) {
+            binding.etDate.error = "This field is required!"
+            return false
+        }
+        if (binding.etPassword.length() < 8) {
+            binding.etPassword.error = "Password must be minimum 8 characters!"
+            return false
+        }
+        if (binding.etConfirmPassword.length() < 8) {
+            binding.etConfirmPassword.error = "Password must be minimum 8 characters!"
+            return false
+        }
+        if (binding.etPassword.text.toString() != binding.etConfirmPassword.text.toString()) {
+            binding.etPassword.error = "Passwords do no match!"
+            binding.etConfirmPassword.error = "Passwords do no match!"
+            binding.etPassword.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_error, 0)
+            binding.etConfirmPassword.setCompoundDrawablesWithIntrinsicBounds( 0, 0, R.drawable.ic_error, 0 )
+            return false
+        }
+        if (binding.radioGroup.checkedRadioButtonId == -1) {
+            val builder = AlertDialog.Builder(context)
+            builder.setMessage("Please select gender!")
+            builder.setTitle("Missing field!")
+            builder.setCancelable(false)
+            builder.setNeutralButton("Ok") { dialog, which ->
+                dialog.cancel()
+            }
+            val alertDialog = builder.create()
+            alertDialog.show()
+            return false
+        }
+
+        return true
     }
 
     private fun kotlinCheck(): String {
@@ -94,9 +151,6 @@ class SignUpFragment : Fragment() {
         }
         return check1
     }
-
-
-
 
     private fun onClickButton(): String {
         return binding.root
