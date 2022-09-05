@@ -35,4 +35,5 @@ class DatePickerFragment : DialogFragment(), OnDateSetListener {
         selectedDateBundle.putString("SELECTED_DATE", selectedDate)
         setFragmentResult("REQUEST_KEY", selectedDateBundle)
     }
+
 }

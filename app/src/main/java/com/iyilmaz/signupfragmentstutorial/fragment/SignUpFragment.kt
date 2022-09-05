@@ -72,6 +72,13 @@ class SignUpFragment : Fragment() {
     }
 
     private fun checkAllFields(): Boolean {
+        binding.etName.error = null
+        binding.etSurname.error = null
+        binding.etUsername.error = null
+        binding.etDate.error = null
+        binding.etPassword.error = null
+        binding.etConfirmPassword.error = null
+
         if (binding.etName.length() == 0) {
             binding.etName.error = "This field is required!"
             return false
