@@ -36,46 +36,58 @@ class SignUpFragment : Fragment() {
                 isAllFieldsChecked = checkAllFields()
 
                 if (isAllFieldsChecked) {
-                    val direction =
-                        SignUpFragmentDirections.actionSignUpFragmentToApproveInputFragment(
-                            Person(
-                                etName.text.toString(),
-                                etSurname.text.toString(),
-                                etUsername.text.toString(),
-                                etDate.text.toString(),
-                                onClickButton(),
-                                kotlinCheck(),
-                                javaCheck(),
-                                dartCheck(),
-                                cSharpCheck()
+                    val builder2 = AlertDialog.Builder(context)
+                    builder2.setMessage("All input was appropriate!")
+                    builder2.setTitle("Sign up successful!")
+                    builder2.setCancelable(false)
+                    builder2.setNeutralButton("Ok") { dialog, _ ->
+                        dialog.cancel()
+                        val direction =
+                            SignUpFragmentDirections.actionSignUpFragmentToApproveInputFragment(
+                                Person(
+                                    etName.text.toString(),
+                                    etSurname.text.toString(),
+                                    etUsername.text.toString(),
+                                    etDOB.text.toString(),
+                                    onClickButton(),
+                                    kotlinCheck(),
+                                    javaCheck(),
+                                    dartCheck(),
+                                    cSharpCheck()
+                                )
                             )
-                        )
-                    findNavController().navigate(direction)
+                        findNavController().navigate(direction)
+                    }
+                    val alertDialog2 = builder2.create()
+                    alertDialog2.show()
                 }
             }
-            imageButton.setOnClickListener {
-                val datePickerFragment = DatePickerFragment()
-                val supportFragmentManager = requireActivity().supportFragmentManager
-
-                supportFragmentManager.setFragmentResultListener(
-                    "REQUEST_KEY",
-                    viewLifecycleOwner
-                ) { resultKey, bundle ->
-                    if (resultKey == "REQUEST_KEY") {
-                        val date = bundle.getString("SELECTED_DATE")
-                        etDate.setText(date)
-                    }
-                }
-                datePickerFragment.show(supportFragmentManager, "DatePickerFragment")
-            }//DatePicker
+            imageButton.setOnClickListener { datePicker() }//DatePicker
+            etDOB.setOnClickListener { datePicker() }//DatePickerEdittext
         }//binding.apply\\
+    }
+
+    private fun FragmentSignUpBinding.datePicker() {
+        val datePickerFragment = DatePickerFragment()
+        val supportFragmentManager = requireActivity().supportFragmentManager
+
+        supportFragmentManager.setFragmentResultListener(
+            "REQUEST_KEY",
+            viewLifecycleOwner
+        ) { resultKey, bundle ->
+            if (resultKey == "REQUEST_KEY") {
+                val date = bundle.getString("SELECTED_DATE")
+                etDOB.setText(date)
+            }
+        }
+        datePickerFragment.show(supportFragmentManager, "DatePickerFragment")
     }
 
     private fun checkAllFields(): Boolean {
         binding.etName.error = null
         binding.etSurname.error = null
         binding.etUsername.error = null
-        binding.etDate.error = null
+        binding.etDOB.error = null
         binding.etPassword.error = null
         binding.etConfirmPassword.error = null
 
@@ -92,8 +104,8 @@ class SignUpFragment : Fragment() {
             return false
         }
 
-        if (binding.etDate.length() == 0) {
-            binding.etDate.error = "This field is required!"
+        if (binding.etDOB.length() == 0) {
+            binding.etDOB.error = "This field is required!"
             return false
         }
         if (binding.etPassword.length() < 8) {
@@ -108,7 +120,12 @@ class SignUpFragment : Fragment() {
             binding.etPassword.error = "Passwords do no match!"
             binding.etConfirmPassword.error = "Passwords do no match!"
             binding.etPassword.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_error, 0)
-            binding.etConfirmPassword.setCompoundDrawablesWithIntrinsicBounds( 0, 0, R.drawable.ic_error, 0 )
+            binding.etConfirmPassword.setCompoundDrawablesWithIntrinsicBounds(
+                0,
+                0,
+                R.drawable.ic_error,
+                0
+            )
             return false
         }
         if (binding.radioGroup.checkedRadioButtonId == -1) {
@@ -116,7 +133,7 @@ class SignUpFragment : Fragment() {
             builder.setMessage("Please select gender!")
             builder.setTitle("Missing field!")
             builder.setCancelable(false)
-            builder.setNeutralButton("Ok") { dialog, which ->
+            builder.setNeutralButton("Ok") { dialog, _ ->
                 dialog.cancel()
             }
             val alertDialog = builder.create()
