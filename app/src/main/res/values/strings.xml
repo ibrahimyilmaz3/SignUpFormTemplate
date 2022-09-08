@@ -28,4 +28,44 @@
     <string name="go_back">Go Back</string>
     <string name="approve">Approve</string>
     <string name="select_date_of_birth">Select date of birth</string>
+    <string name="city">City:</string>
+    <string name="city_hint">City</string>
+    <string name="your_car">Your Car</string>
+    <string name="your_car_show">Your Car:</string>
+    <string-array name="cities">
+        <item>London</item>
+        <item>Paris</item>
+        <item>Madrid</item>
+        <item>Berlin</item>
+        <item>Amsterdam</item>
+        <item>Washington D.C.</item>
+        <item>Rome</item>
+    </string-array>
+    <string-array name="cars">
+        <item>Toyota Corolla</item>
+        <item>Ford F-series</item>
+        <item>Volkswagen Golf</item>
+        <item>Volkswagen Beetle</item>
+        <item>Ford Escort</item>
+        <item>Honda Civic</item>
+        <item>Ford Model T</item>
+        <item>Volkswagen Passat</item>
+        <item>Chevrolet Impala</item><item>Toyota Corolla</item>
+        <item>Ford F-series</item>
+        <item>Volkswagen Golf</item>
+        <item>Volkswagen Beetle</item>
+        <item>Ford Escort</item>
+        <item>Honda Civic</item>
+        <item>Ford Model T</item>
+        <item>Volkswagen Passat</item>
+        <item>Chevrolet Impala</item><item>Toyota Corolla</item>
+        <item>Ford F-series</item>
+        <item>Volkswagen Golf</item>
+        <item>Volkswagen Beetle</item>
+        <item>Ford Escort</item>
+        <item>Honda Civic</item>
+        <item>Ford Model T</item>
+        <item>Volkswagen Passat</item>
+        <item>Chevrolet Impala</item>
+    </string-array>
 </resources>

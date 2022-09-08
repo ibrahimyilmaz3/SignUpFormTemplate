@@ -26,6 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/hint_name"
+        android:textColorHint="#78909C"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/tvShowSurname"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,10 +49,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/surname"
+        android:textColorHint="#78909C"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/tvShowUsername"
+        app:layout_constraintBottom_toTopOf="@+id/tvShowCar"
         app:layout_constraintStart_toStartOf="@+id/tvShowName"
         app:layout_constraintTop_toBottomOf="@+id/tvShowName" />
+    <TextView
+        android:id="@+id/tvCar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/your_car_show"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tvShowCar"
+        app:layout_constraintEnd_toEndOf="@+id/tvSurname" />
+
+    <TextView
+        android:id="@+id/tvShowCar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/your_car"
+        android:textColorHint="#78909C"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvShowUsername"
+        app:layout_constraintStart_toStartOf="@+id/tvShowSurname"
+        app:layout_constraintTop_toBottomOf="@+id/tvShowSurname" />
 
     <TextView
         android:id="@+id/tvUsername"
@@ -61,17 +83,39 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/tvShowUsername"
-        app:layout_constraintEnd_toEndOf="@+id/tvSurname" />
+        app:layout_constraintEnd_toEndOf="@+id/tvCar" />
 
     <TextView
         android:id="@+id/tvShowUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/username"
+        android:textColorHint="#78909C"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvShowCity"
+        app:layout_constraintStart_toStartOf="@+id/tvShowSurname"
+        app:layout_constraintTop_toBottomOf="@+id/tvShowCar" />
+
+    <TextView
+        android:id="@+id/tvCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/city"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tvShowCity"
+        app:layout_constraintEnd_toEndOf="@+id/tvUsername" />
+
+    <TextView
+        android:id="@+id/tvShowCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/city"
+        android:textColorHint="#78909C"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/tvShowDOB"
-        app:layout_constraintStart_toStartOf="@+id/tvShowSurname"
-        app:layout_constraintTop_toBottomOf="@+id/tvShowSurname" />
+        app:layout_constraintStart_toStartOf="@+id/tvShowUsername"
+        app:layout_constraintTop_toBottomOf="@+id/tvShowUsername" />
 
     <TextView
         android:id="@+id/tvDOB"
@@ -88,10 +132,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/date_of_birth"
+        android:textColorHint="#78909C"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/tvShowGender"
-        app:layout_constraintStart_toStartOf="@+id/tvShowUsername"
-        app:layout_constraintTop_toBottomOf="@+id/tvShowUsername" />
+        app:layout_constraintStart_toStartOf="@+id/tvShowCity"
+        app:layout_constraintTop_toBottomOf="@+id/tvShowCity" />
 
     <TextView
         android:id="@+id/tvAppGender"
@@ -108,6 +153,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/gender"
+        android:textColorHint="#78909C"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/tvShowSkills"
         app:layout_constraintStart_toStartOf="@+id/tvShowDOB"
@@ -128,6 +174,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/skills"
+        android:textColorHint="#78909C"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/btnApprove"
         app:layout_constraintStart_toStartOf="@+id/tvShowGender"

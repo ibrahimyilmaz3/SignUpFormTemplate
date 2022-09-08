@@ -13,6 +13,12 @@
         <action
             android:id="@+id/action_signUpFragment_to_approveInputFragment"
             app:destination="@id/approveInputFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_carListFragment"
+            app:destination="@id/carListFragment" />
+        <argument
+            android:name="car"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/approveInputFragment"
@@ -27,5 +33,14 @@
         <argument
             android:name="Person"
             app:argType="com.iyilmaz.signupfragmentstutorial.entity.Person" />
+    </fragment>
+    <fragment
+        android:id="@+id/carListFragment"
+        android:name="com.iyilmaz.signupfragmentstutorial.fragment.CarListFragment"
+        android:label="Select Your Car"
+        tools:layout="@layout/fragment_car_list" >
+        <action
+            android:id="@+id/action_carListFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
     </fragment>
 </navigation>

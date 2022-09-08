@@ -1,22 +1,36 @@
 package com.iyilmaz.signupfragmentstutorial.fragment
 
 import android.app.AlertDialog
+import android.app.DatePickerDialog
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.RadioButton
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.iyilmaz.signupfragmentstutorial.R
 import com.iyilmaz.signupfragmentstutorial.databinding.FragmentSignUpBinding
 import com.iyilmaz.signupfragmentstutorial.entity.Person
+import java.text.SimpleDateFormat
+import java.util.*
 
 class SignUpFragment : Fragment() {
     private lateinit var binding: FragmentSignUpBinding
     private var isAllFieldsChecked: Boolean = false
+    private val args2: SignUpFragmentArgs by navArgs()
+    private lateinit var car: String
+
+    override fun onResume() {
+        super.onResume()
+        val cities = resources.getStringArray(R.array.cities)
+        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_cities, cities)
+        binding.autoCompleteTextview.setAdapter(arrayAdapter)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +44,9 @@ class SignUpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
+
+            car = args2.car
+            binding.etSelectCar.setText(car)
 
             btnContinue.setOnClickListener {
 
@@ -47,6 +64,8 @@ class SignUpFragment : Fragment() {
                                 Person(
                                     etName.text.toString(),
                                     etSurname.text.toString(),
+                                    etSelectCar.text.toString(),
+                                    autoCompleteTextview.text.toString(),
                                     etUsername.text.toString(),
                                     etDOB.text.toString(),
                                     onClickButton(),
@@ -62,26 +81,30 @@ class SignUpFragment : Fragment() {
                     alertDialog2.show()
                 }
             }
-            imageButton.setOnClickListener { datePicker() }//DatePicker
-            etDOB.setOnClickListener { datePicker() }//DatePickerEdittext
+            imageButton.setOnClickListener { datePicker() }//DatePicker\\
+            etDOB.setOnClickListener { datePicker() }//DatePickerEdittext\\
+            etSelectCar.setOnClickListener {
+                findNavController().navigate(R.id.action_signUpFragment_to_carListFragment)
+            }//selectCar\\
         }//binding.apply\\
     }
 
-    private fun FragmentSignUpBinding.datePicker() {
-        val datePickerFragment = DatePickerFragment()
-        val supportFragmentManager = requireActivity().supportFragmentManager
-
-        supportFragmentManager.setFragmentResultListener(
-            "REQUEST_KEY",
-            viewLifecycleOwner
-        ) { resultKey, bundle ->
-            if (resultKey == "REQUEST_KEY") {
-                val date = bundle.getString("SELECTED_DATE")
-                etDOB.setText(date)
-            }
-        }
-        datePickerFragment.show(supportFragmentManager, "DatePickerFragment")
+    private fun datePicker() {
+        val calendar: Calendar = Calendar.getInstance()
+        val dialog = DatePickerDialog(requireContext(), { _, year, month, day_of_month ->
+            calendar[Calendar.YEAR] = year
+            calendar[Calendar.MONTH] = month + 1
+            calendar[Calendar.DAY_OF_MONTH] = day_of_month
+            val myFormat = "dd/MM/yyyy"
+            val sdf = SimpleDateFormat(myFormat, Locale.getDefault())
+            binding.etDOB.setText(sdf.format(calendar.time))
+        }, calendar[Calendar.YEAR], calendar[Calendar.MONTH], calendar[Calendar.DAY_OF_MONTH])
+        dialog.datePicker.minDate = calendar.timeInMillis - 3153600000000
+        calendar.add(Calendar.YEAR, 0)
+        dialog.datePicker.maxDate = calendar.timeInMillis - 567648000000
+        dialog.show()
     }
+
 
     private fun checkAllFields(): Boolean {
         binding.etName.error = null

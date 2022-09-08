@@ -5,18 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.iyilmaz.signupfragmentstutorial.R
 import com.iyilmaz.signupfragmentstutorial.databinding.FragmentApproveInputBinding
 import com.iyilmaz.signupfragmentstutorial.entity.Person
 
 class ApproveInputFragment : Fragment() {
     private lateinit var binding: FragmentApproveInputBinding
     private val args: ApproveInputFragmentArgs by navArgs()
-
     private lateinit var person: Person
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,7 +20,6 @@ class ApproveInputFragment : Fragment() {
     ): View {
         binding = FragmentApproveInputBinding.inflate(inflater, container, false)
         person = args.person
-
         return binding.root
     }
 
@@ -38,6 +33,8 @@ class ApproveInputFragment : Fragment() {
 
             tvShowName.text = person.name
             tvShowSurname.text = person.surname
+            tvShowCar.text = person.car
+            tvShowCity.text = person.city
             tvShowUsername.text = person.username
             tvShowDOB.text = person.date
             tvShowGender.text = person.gender
@@ -45,8 +42,7 @@ class ApproveInputFragment : Fragment() {
                 tvShowSkills.text = it
             }
             btnGoBack.setOnClickListener {
-                    findNavController().navigate(R.id.action_approveInputFragment_to_signUpFragment)
-
+                findNavController().navigateUp()
             }
         }
     }

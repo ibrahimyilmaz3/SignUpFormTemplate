@@ -1,4 +1,5 @@
-package com.iyilmaz.signupfragmentstutorial.fragment
+//INACTIVE
+package com.iyilmaz.signupfragmentstutorial.tools
 
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
