@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_map"
-    app:startDestination="@id/signUpFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/signUpFragment"
@@ -38,9 +38,22 @@
         android:id="@+id/carListFragment"
         android:name="com.iyilmaz.signupfragmentstutorial.fragment.CarListFragment"
         android:label="Select Your Car"
-        tools:layout="@layout/fragment_car_list" >
+        tools:layout="@layout/fragment_car_list" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.iyilmaz.signupfragmentstutorial.fragment.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_carListFragment_to_signUpFragment"
+            android:id="@+id/action_homeFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_movieRecyclerViewFragment"
+            app:destination="@id/movieRecyclerViewFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/movieRecyclerViewFragment"
+        android:name="com.iyilmaz.signupfragmentstutorial.fragment.MovieRecyclerViewFragment"
+        android:label="fragment_movie_recycler_view"
+        tools:layout="@layout/fragment_movie_recycler_view" />
 </navigation>
