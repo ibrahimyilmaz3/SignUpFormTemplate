@@ -32,6 +32,9 @@
     <string name="city_hint">City</string>
     <string name="your_car">Your Car</string>
     <string name="your_car_show">Your Car:</string>
+    <string name="contentDescription">fuckingContentDescription</string>
+    <string name="recycler_view">Recycler View</string>
+    <string name="sign_up_view">Sign Up View</string>
     <string-array name="cities">
         <item>London</item>
         <item>Paris</item>
@@ -50,7 +53,8 @@
         <item>Honda Civic</item>
         <item>Ford Model T</item>
         <item>Volkswagen Passat</item>
-        <item>Chevrolet Impala</item><item>Toyota Corolla</item>
+        <item>Chevrolet Impala</item>
+        <item>Toyota Corolla</item>
         <item>Ford F-series</item>
         <item>Volkswagen Golf</item>
         <item>Volkswagen Beetle</item>
@@ -58,7 +62,8 @@
         <item>Honda Civic</item>
         <item>Ford Model T</item>
         <item>Volkswagen Passat</item>
-        <item>Chevrolet Impala</item><item>Toyota Corolla</item>
+        <item>Chevrolet Impala</item>
+        <item>Toyota Corolla</item>
         <item>Ford F-series</item>
         <item>Volkswagen Golf</item>
         <item>Volkswagen Beetle</item>

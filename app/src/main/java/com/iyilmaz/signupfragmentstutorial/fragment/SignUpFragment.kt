@@ -12,7 +12,6 @@ import android.widget.RadioButton
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.iyilmaz.signupfragmentstutorial.R
 import com.iyilmaz.signupfragmentstutorial.databinding.FragmentSignUpBinding
 import com.iyilmaz.signupfragmentstutorial.entity.Person
@@ -22,7 +21,7 @@ import java.util.*
 class SignUpFragment : Fragment() {
     private lateinit var binding: FragmentSignUpBinding
     private var isAllFieldsChecked: Boolean = false
-    private val args2: SignUpFragmentArgs by navArgs()
+//    private val args2: SignUpFragmentArgs by navArgs()
     private lateinit var car: String
 
     override fun onResume() {
@@ -48,8 +47,8 @@ class SignUpFragment : Fragment() {
 
         binding.apply {
 
-            car = args2.car
-            binding.etSelectCar.setText(car)
+//            car = args2.car
+//            binding.etSelectCar.setText(car)
 
             btnContinue.setOnClickListener {
 

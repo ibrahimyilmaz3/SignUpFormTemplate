@@ -1,15 +1,13 @@
 package com.iyilmaz.signupfragmentstutorial.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.Fragment
 import com.iyilmaz.signupfragmentstutorial.R
 import com.iyilmaz.signupfragmentstutorial.databinding.FragmentCarListBinding
-import com.iyilmaz.signupfragmentstutorial.entity.Person
 
 class CarListFragment : Fragment() {
     private lateinit var binding: FragmentCarListBinding
@@ -29,9 +27,6 @@ class CarListFragment : Fragment() {
         )
         binding.carListView.adapter = arrayAdapterCar
         binding.carListView.setOnItemClickListener { _, _, _, _ ->
-            val direction2 =
-                CarListFragmentDirections.actionCarListFragmentToSignUpFragment(binding.carListView.selectedItem.toString())
-            findNavController().navigate(direction2)
         }
     }
 }
