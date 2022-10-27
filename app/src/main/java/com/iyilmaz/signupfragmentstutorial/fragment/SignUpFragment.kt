@@ -22,7 +22,7 @@ import java.util.*
 class SignUpFragment : Fragment() {
     private lateinit var binding: FragmentSignUpBinding
     private var isAllFieldsChecked: Boolean = false
-    private val args2: SignUpFragmentArgs by navArgs()
+    //private val args2: SignUpFragmentArgs by navArgs()
     private lateinit var car: String
 
     override fun onResume() {
@@ -48,8 +48,8 @@ class SignUpFragment : Fragment() {
 
         binding.apply {
 
-            car = args2.car
-            binding.etSelectCar.setText(car)
+            //car = args2.car
+            //binding.etSelectCar.setText(car)
 
             btnContinue.setOnClickListener {
 
