@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp">
+    android:padding="16dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="8dp"
         app:cardBackgroundColor="@color/blueBlack"
         app:cardCornerRadius="20dp"
         app:cardElevation="8dp"
@@ -21,54 +22,42 @@
             android:layout_height="match_parent"
             android:padding="8dp">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardViewImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/blueBlack"
-                app:cardCornerRadius="20dp"
-                app:layout_constraintStart_toStartOf="parent"
+            <ImageView
+                android:id="@+id/ivMovie"
+                android:layout_width="150dp"
+                android:layout_height="209dp"
+                android:contentDescription="@string/movies_images"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:layout_editor_absoluteX="6dp"
-                tools:layout_editor_absoluteY="6dp">
-
-                <ImageView
-                    android:id="@+id/ivMovie"
-                    android:layout_width="150dp"
-                    android:layout_height="209dp"
-                    android:contentDescription="@string/movies_images"
-                    android:scaleType="fitXY"
-                    tools:srcCompat="@drawable/apocalypto" />
-            </androidx.cardview.widget.CardView>
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="8dp"
+                tools:srcCompat="@drawable/apocalypto" />
 
             <TextView
                 android:id="@+id/tvMovieName"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="42dp"
+                android:layout_marginTop="32dp"
                 android:textColor="@color/tanAccent"
-                android:textSize="20sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
-                app:layout_constraintLeft_toRightOf="@id/cardViewImage"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="@id/cardViewImage"
-                tools:text="Text Text Text Text Text Text Text Text Text" />
+                app:layout_constraintLeft_toRightOf="@id/ivMovie"
+                app:layout_constraintTop_toTopOf="@id/ivMovie"
+                tools:text="Text Text Text" />
 
 
             <TextView
                 android:id="@+id/tvMovieYear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginBottom="42dp"
+                android:layout_marginBottom="32dp"
                 android:text="@string/textview_tvMovieYear"
                 android:textColor="@color/tanAccent"
-                android:textSize="15sp"
-                app:layout_constraintBottom_toBottomOf="@id/cardViewImage"
-                app:layout_constraintStart_toEndOf="@+id/cardViewImage"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/ivMovie"
+                app:layout_constraintStart_toStartOf="@+id/tvMovieName"
                 app:layout_constraintTop_toBottomOf="@+id/tvMovieName" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

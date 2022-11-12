@@ -34,6 +34,8 @@
     <string name="your_car_show">Your Car:</string>
     <string name="movies">Movies</string>
     <string name="sign_up">Sign Up</string>
+    <string name="movies_images">Movies\' Images</string>
+    <string name="textview_tvMovieYear">TextView</string>
     <string-array name="cities">
         <item>London</item>
         <item>Paris</item>
